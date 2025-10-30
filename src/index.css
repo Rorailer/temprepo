@@ -1,6 +1,4 @@
-@import "tailwindcss/preflight";
-@tailwind utilities;
-
+@import "tailwindcss";
 /* Inefficiency fix: Use Tailwind's @layer base for custom element styling instead of raw CSS outside of layers */
 @layer base {
     h1,

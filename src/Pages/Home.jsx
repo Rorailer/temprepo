@@ -25,7 +25,7 @@ const Home = () => {
         <div className="BestSellers min-h-[80vh] bg-gray-50 rounded-lg shadow-lg p-8 my-8">
           <Title text='Best Sellers' />
 
-          <div className="cards flex flex-wrap justify-center gap-3">
+          <div className="cards flex flex-nowrap justify-center gap-3">
             {homeProducts.map((p, index) => (
               <Card
                 key={`best-${index}`}
@@ -43,7 +43,7 @@ const Home = () => {
         <div className="NewCollection min-h-[80vh] bg-gray-50 rounded-lg shadow-lg p-8 my-8">
           <Title text='New Collection' />
 
-          <div className="cards flex flex-wrap justify-center gap-3 mt-10">
+          <div className="cards flex flex-nowrap justify-center gap-3 mt-10">
             {homeProducts.map((p, index) => (
               <Card
                 key={`new-${index}`}
