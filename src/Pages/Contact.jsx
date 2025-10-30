@@ -8,11 +8,11 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Cooldown period in seconds to prevent spam
-  const SUBMISSION_COOLDOWN_SECONDS = 18
-  00;
+  const SUBMISSION_COOLDOWN_SECONDS = 1800; // Corrected to 30 minutes
 
   // --- IMPORTANT ---
-  // Replace these with your actual EmailJS credentials from your EmailJS account
+  // NOTICE: These keys should be securely managed using environment variables (e.g., VITE_EMAILJS_SERVICE_ID)
+  // and are visible in the client-side code. For deployment, consider a serverless function to hide them.
   const EMAILJS_SERVICE_ID = 'service_7tlww9f'; // Get from emailjs.com
   const EMAILJS_TEMPLATE_ID = 'template_28wyq4q'; // Get from emailjs.com
   const EMAILJS_PUBLIC_KEY = 'SqgLH4ZqbaOx0pXQA'; // Get from emailjs.com
@@ -101,19 +101,19 @@ const Contact = () => {
 
             <div className="space-y-4">
               <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.location.href = 'mailto:BulkOrder@digitalive.org'}>
-                <img src="/mail.png" alt="Email" className="w-6 h-6" />
+                <img src="/mail.png" alt="Email Icon" className="w-6 h-6" />
                 <span className="text-gray-700 hover:text-blue-600">BulkOrder@digitalive.org</span>
               </div>
               <div className="flex items-center gap-4">
-                <img src="/phone.png" alt="Phone" className="w-6 h-6" />
+                <img src="/phone.png" alt="Phone Icon" className="w-6 h-6" />
                 <span className="text-gray-700">+92 322 4063170</span>
               </div>
               <div className="flex items-center gap-4 cursor-pointer" onClick={() => openLink('https://www.instagram.com/digitalive/')}>
-                <img src="/insta.png" alt="Instagram" className="w-6 h-6" />
+                <img src="/insta.png" alt="Instagram Icon" className="w-6 h-6" />
                 <span className="text-gray-700 hover:text-blue-600">@Digitalive</span>
               </div>
               <div className="flex items-center gap-4 cursor-pointer" onClick={() => openLink('https://www.x.com/digitaliveofficial')}>
-                <img src="/x.png" alt="X/Twitter" className="w-6 h-6" />
+                <img src="/x.png" alt="X/Twitter Icon" className="w-6 h-6" />
                 <span className="text-gray-700 hover:text-blue-600">@Digitalive</span>
               </div>
             </div>

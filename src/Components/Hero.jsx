@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom' // Imported useNavigate
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
 
     <div className='flex flex-col md:flex-row items-center justify-center w-full min-h-screen px-6 md:px-12 lg:px-20 bg-linear-to-br from-gray-50 to-white'>
@@ -14,10 +16,16 @@ const Hero = () => {
         </p>
         <div className="flex justify-center gap-4 flex-wrap">
 
-          <button className='px-8 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-200 shadow-lg hover:shadow-xl'>
+          <button 
+            className='px-8 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-200 shadow-lg hover:shadow-xl'
+            onClick={() => navigate('/shop')} // Added navigation
+          >
             Shop Now
           </button>
-          <button className='px-8 py-3 bg-white text-black font-semibold rounded-lg border-2 border-black hover:bg-gray-50 transition-colors duration-200'>
+          <button 
+            className='px-8 py-3 bg-white text-black font-semibold rounded-lg border-2 border-black hover:bg-gray-50 transition-colors duration-200'
+            onClick={() => navigate('/contact')} // Added navigation
+          >
             Custom/Bulk Order
           </button>
 
@@ -36,7 +44,7 @@ const Hero = () => {
           <div className='relative bg-linear-to-br from-blue-500 to-purple-600 rounded-3xl shadow-2xl p-8 flex items-center justify-center'>
             <div className='text-white text-center'>
               <div className='text-8xl mb-4'>
-                <img src="ColoredLogo.svg" alt="" />
+                <img src="/ColoredLogo.svg" alt="Digitalive Logo" /> {/* Added alt text and leading slash for public assets */}
               </div>
               <p className='text-2xl font-bold'>Cosplay Costumes</p>
               <p className='text-lg opacity-90'>Custom designs</p>

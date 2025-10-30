@@ -1,8 +1,19 @@
 import React from 'react'
 import Hero from '../Components/Hero'
-import Navbar from '../Components/Navbar'
+// import Navbar from '../Components/Navbar' // Removed redundant import
 import Card from '../Components/Card'
 import Title from '../Components/Title'
+import Footer from '../Components/Footer' // Imported Footer component
+
+// Placeholder data for demonstration - in a real app this should be fetched or from state
+const homeProducts = [
+  { imageUrl: "https://via.placeholder.com/300/A52A2A/FFFFFF?text=Product1", name: "My Product 1", oldPrice: "25.00", newPrice: "19.99" },
+  { imageUrl: "https://via.placeholder.com/300/8B4513/FFFFFF?text=Product2", name: "My Product 2", oldPrice: "25.00", newPrice: "19.99" },
+  { imageUrl: "https://via.placeholder.com/300/D2691E/FFFFFF?text=Product3", name: "My Product 3", oldPrice: "25.00", newPrice: "19.99" },
+  { imageUrl: "https://i.etsystatic.com/61334236/r/il/c58dfd/7315435985/il_1588xN.7315435985_f02u.jpg", name: "Saiyan Battle Armour", oldPrice: "25.00", newPrice: "19.99" },
+  { imageUrl: "https://via.placeholder.com/300/696969/FFFFFF?text=Product5", name: "My Product 5", oldPrice: "25.00", newPrice: "19.99" },
+];
+
 
 const Home = () => {
   return (
@@ -14,32 +25,16 @@ const Home = () => {
         <div className="BestSellers min-h-[80vh] bg-gray-50 rounded-lg shadow-lg p-8 my-8">
           <Title text='Best Sellers' />
 
-          <div className="cards flex flex-row gap-3">
-            <Card imageUrl="https://via.placeholder.com/300"
-              name="My Product"
-              oldPrice="25.00"
-              newPrice="19.99" />
-
-            <Card imageUrl="https://via.placeholder.com/300"
-              name="My Product"
-              oldPrice="25.00"
-              newPrice="19.99" />
-
-            <Card imageUrl="https://via.placeholder.com/300"
-              name="My Product"
-              oldPrice="25.00"
-              newPrice="19.99" />
-
-            <Card imageUrl="https://i.etsystatic.com/61334236/r/il/c58dfd/7315435985/il_1588xN.7315435985_f02u.jpg"
-              name="Saiyan Battle Armour"
-              oldPrice="25.00"
-              newPrice="19.99" />
-            <Card imageUrl="https://via.placeholder.com/300"
-              name="My Product"
-              oldPrice="25.00"
-              newPrice="19.99" />
-
-
+          <div className="cards flex flex-wrap justify-center gap-3">
+            {homeProducts.map((p, index) => (
+              <Card
+                key={`best-${index}`}
+                imageUrl={p.imageUrl}
+                name={p.name}
+                oldPrice={p.oldPrice}
+                newPrice={p.newPrice} 
+              />
+            ))}
           </div>
         </div>
 
@@ -48,69 +43,19 @@ const Home = () => {
         <div className="NewCollection min-h-[80vh] bg-gray-50 rounded-lg shadow-lg p-8 my-8">
           <Title text='New Collection' />
 
-          <div className="cards flex flex-row gap-3 mt-10">
-            <Card imageUrl="https://via.placeholder.com/300"
-              name="My Product"
-              oldPrice="25.00"
-              newPrice="19.99" />
-
-            <Card imageUrl="https://via.placeholder.com/300"
-              name="My Product"
-              oldPrice="25.00"
-              newPrice="19.99" />
-
-            <Card imageUrl="https://via.placeholder.com/300"
-              name="My Product"
-              oldPrice="25.00"
-              newPrice="19.99" />
-
-            <Card imageUrl="https://i.etsystatic.com/61334236/r/il/c58dfd/7315435985/il_1588xN.7315435985_f02u.jpg"
-              name="Saiyan Battle Armour"
-              oldPrice="25.00"
-              newPrice="19.99" />
-            <Card imageUrl="https://via.placeholder.com/300"
-              name="My Product"
-              oldPrice="25.00"
-              newPrice="19.99" />
-
-
+          <div className="cards flex flex-wrap justify-center gap-3 mt-10">
+            {homeProducts.map((p, index) => (
+              <Card
+                key={`new-${index}`}
+                imageUrl={p.imageUrl}
+                name={p.name}
+                oldPrice={p.oldPrice}
+                newPrice={p.newPrice} 
+              />
+            ))}
           </div>
         </div>
       </div>
-
-
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-between">
-            <div className="w-full md:w-1/3 mb-6 md:mb-0">
-              <h2 className="text-2xl font-bold mb-2">DigitalIve</h2>
-              <p className="text-gray-400">Your source for the best digital products.</p>
-            </div>
-            <div className="w-full md:w-1/3 mb-6 md:mb-0">
-              <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
-              <ul className="text-gray-400">
-                <li className="mb-2"><a href="#" className="hover:text-white">Home</a></li>
-                <li className="mb-2"><a href="#" className="hover:text-white">Shop</a></li>
-                <li className="mb-2"><a href="#" className="hover:text-white">About</a></li>
-                <li className="mb-2"><a href="#" className="hover:text-white">Contact</a></li>
-              </ul>
-            </div>
-            <div className="w-full md:w-1/3">
-              <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white"><i className="fab fa-facebook-f"></i></a>
-                <a href="#" className="text-gray-400 hover:text-white"><i className="fab fa-twitter"></i></a>
-                <a href="#" className="text-gray-400 hover:text-white"><i className="fab fa-instagram"></i></a>
-                <a href="#" className="text-gray-400 hover:text-white"><i className="fab fa-linkedin-in"></i></a>
-              </div>
-              <p className="text-gray-400 mt-4">digitalive@gmail.com</p>
-            </div>
-          </div>
-          <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
-            <p>&copy; 2025 DigitalIve. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </>
   )
 }

@@ -2,25 +2,19 @@ import React from 'react'
 
 
 // Product card component
-// Accepts camelCase and lowercase props for convenience:
-// { imageUrl | imageurl | image, name, oldPrice | oldprice, newPrice | newprice }
+// Accepts props: { imageUrl, name, oldPrice, newPrice }
 const Card = (props) => {
+  // Simplified prop destructuring for clarity and consistency
   const {
     imageUrl,
-    imageurl,
-    image,
     name,
-    title,
     oldPrice,
-    oldprice,
     newPrice,
-    newprice,
   } = props || {}
 
-  const imgSrc = imageUrl || imageurl || image || ''
-  const productName = name || title || 'Product Name'
-  const rawOld = oldprice ?? oldPrice
-  const rawNew = newprice ?? newPrice
+  const productName = name || 'Product Name'
+  const rawOld = oldPrice
+  const rawNew = newPrice
 
   const format = (val) => {
     if (val === undefined || val === null) return null
@@ -37,7 +31,7 @@ const Card = (props) => {
       {/* 1:1 (square) responsive image using padding-top trick: paddingTop = (height/width)*100 = (1/1)*100 = 100% */}
       <div className="relative w-full bg-gray-100" style={{ paddingTop: '100%' }}>
         <img
-          src={imgSrc}
+          src={imageUrl}
           alt={productName}
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"

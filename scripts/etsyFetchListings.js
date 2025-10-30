@@ -1,11 +1,9 @@
 /**
  * Etsy API v3 - Fetch All Listings from a Single Seller
- * 
- * Requirements:
+ * * Requirements:
  * - Etsy API Key (from https://www.etsy.com/developers/your-apps)
  * - Shop ID or Shop Name
- * 
- * Install dependencies: bun install node-fetch
+ * * Install dependencies: bun install node-fetch
  */
 
 import fs from 'fs';
@@ -13,6 +11,7 @@ import path from 'path';
 
 // Configuration
 const CONFIG = {
+  // Recommended: Use environment variables
   API_KEY: process.env.ETSY_API_KEY || 'YOUR_ETSY_API_KEY_HERE',
   SHOP_ID: process.env.ETSY_SHOP_ID || 'YOUR_SHOP_ID_HERE', // Can be shop name or shop ID
   OUTPUT_FILE: './data/etsy-listings.json',
@@ -54,7 +53,8 @@ async function fetchShopListings(shopId, apiKey) {
         
         // Check if there are more results
         offset += CONFIG.LIMIT;
-        hasMore = data.count === CONFIG.LIMIT;
+        // Fix: Check if the number of results fetched equals the limit for pagination
+        hasMore = data.results.length === CONFIG.LIMIT; 
       } else {
         hasMore = false;
       }

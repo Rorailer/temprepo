@@ -1,12 +1,17 @@
-@import "tailwindcss";
+@import "tailwindcss/preflight";
+@tailwind utilities;
 
+/* Inefficiency fix: Use Tailwind's @layer base for custom element styling instead of raw CSS outside of layers */
+@layer base {
+    h1,
+    h2,
+    h3{
+        /* Assumes 'Archivo Black' is loaded from index.html */
+        font-family: "Archivo Black", sans-serif;
+    }
 
-h1,
-h2,
-h3{
-    font-family: "Archivo Black";
-}
-
-span{
-    font-family: "Outfit";
+    span{
+        /* Assumes 'Outfit' is loaded from index.html */
+        font-family: "Outfit", sans-serif;
+    }
 }
