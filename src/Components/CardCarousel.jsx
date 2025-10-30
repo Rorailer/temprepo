@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import anime from 'animejs';
+import * as anime from 'animejs';
 
 const CardCarousel = ({ cards }) => {
   const [current, setCurrent] = useState(0);
@@ -64,9 +64,6 @@ const CardCarousel = ({ cards }) => {
   };
 
   // --- Custom Layout for 20% peeking cards ---
-  // Main card: centered, full height
-  // Next/Prev: scaled down, vertically centered, only 20% visible
-  // All others: hidden
   return (
     <div className="relative w-full flex flex-col items-center">
       <div
@@ -145,9 +142,9 @@ const CardCarousel = ({ cards }) => {
           />
         ))}
       </div>
-      {/* Prev/Next buttons for desktop */}
+      {/* Prev/Next buttons are intentionally hidden to enforce swipe-only navigation on mobile */}
       <button
-        className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full shadow p-2 z-30"
+        className="hidden absolute left-0 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full shadow p-2 z-30"
         onClick={handlePrev}
         disabled={current === 0}
         aria-label="Previous"
@@ -155,7 +152,7 @@ const CardCarousel = ({ cards }) => {
         <span className="text-2xl">&#8592;</span>
       </button>
       <button
-        className="hidden sm:block absolute right-0 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full shadow p-2 z-30"
+        className="hidden absolute right-0 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full shadow p-2 z-30"
         onClick={handleNext}
         disabled={current === cards.length - 1}
         aria-label="Next"
