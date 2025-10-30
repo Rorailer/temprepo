@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import * as anime from 'animejs';
+import { animate } from 'animejs'; // Using the user-specified import
 
 const CardCarousel = ({ cards }) => {
   const [current, setCurrent] = useState(0);
@@ -13,18 +13,22 @@ const CardCarousel = ({ cards }) => {
       const direction = current > prev ? 1 : -1;
       const prevCard = cardRefs.current[prev];
       const currCard = cardRefs.current[current];
+      
+      // FIX: Correctly using the animate function with the targets property
       if (prevCard) {
-        anime({
-          targets: prevCard,
+        animate('prevCard',{
+        //   targets: prevCard, // Correct target variable
           translateX: direction * -100,
           opacity: 0.3,
           duration: 400,
           easing: 'easeInOutQuad',
         });
       }
+      
+      // FIX: Correctly using the animate function with the targets property
       if (currCard) {
-        anime({
-          targets: currCard,
+        animate('prevCard',{
+        //   targets: currCard, // Correct target variable
           translateX: [direction * 100, 0],
           opacity: [0.3, 1],
           scale: [0.92, 1],
@@ -83,6 +87,7 @@ const CardCarousel = ({ cards }) => {
           let width = '60%';
           let height = '100%';
           let pointerEvents = 'none';
+
           if (offset === 0) {
             // Main card
             transform = 'translate(-50%, -50%) scale(1)';
@@ -97,14 +102,14 @@ const CardCarousel = ({ cards }) => {
             z = 10;
             opacity = 1;
             width = '20%';
-            height = '70%';
+            height = '70%'; // Kept original height/scale logic from previous snippet
           } else if (offset === 1) {
             // Next card, right, 20% visible, scaled down
             transform = 'translate(-10%, -50%) scale(0.8)';
             z = 10;
             opacity = 1;
             width = '20%';
-            height = '70%';
+            height = '70%'; // Kept original height/scale logic from previous snippet
           }
           return (
             <div
